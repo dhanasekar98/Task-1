@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form reg</title>
+	<link rel="stylesheet" type="text/css" href="nama.css">
+	<script type="text/javascript">
+		
+function takevalue()
+{
+	
+
+		var name=document.getElementById("first-name").value;
+		var age=document.getElementById("Last").value;
+		var ema=document.getElementById("email").value;
+		var ph=document.getElementById("phone-number").value;
+		var lo=document.getElementById("location").value;
+		var ho=document.getElementById("Hobby").value;
+		simple(name,age,ema,ph,lo,ho);
+		
+	}
+	
+	</script>
+</head>
+
+<body>
+	<div class="my-form"><h1>Registration-Form</h1></div>
+	<div class="main">
+	<form onsubmit="takevalue()">
+	
+	<div id="name">
+		<label>First Name</label>
+		<input  id="first-name"type="text" name="First">
+	</div>
+	<div  id="name">
+		<label>Last Name</label>
+		<input  id="Last"type="text" name="last-name">
+	</div>
+	<div id="name">
+		<label>Email</label>
+		<input  id="email"type="Email" name="email">
+	</div>
+	<div id="name">
+		<label>Phone</label>
+		<input  id="phone-number"type="number" name="phone-number">
+	</div>
+	<div id="name">
+		<label>Location</label>
+		<input  id="location"type="text" name="location">
+	</div>
+	<div id="name">
+		<label>Hobby</label>
+		<input  id="Hobby"type="text" name="Hobby">
+	</div>
+	<div id ="name">
+	<button>Add item</button></div>
+	</form>
+</div>
+	<script type="text/javascript">
+		function simple( na,ag,em,phone,loca,hobb)
+		{
+			
+		localStorage.setItem(na ,name);
+		localStorage.setItem(ag , age);
+		localStorage.setItem(em , email);
+		localStorage.setItem(phone , phone-number);
+		localStorage.setItem(loca,Location);
+		localStorage.setItem(hobb,Hobby);
+
+		}
+	</script>
+	
+
+</body>
+</html>
