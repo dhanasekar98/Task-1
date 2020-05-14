@@ -19,16 +19,10 @@
 			<th>Hobby</th>
 			<th>Actions</th>
 					</thead>
-						<tbody >
-			
-			<th>35</th>
-			<td>Jane</td>
-			<td>Smith</td>
-			<td>js@gmail.com</td>
-			<td>503-555-5555</td>
-			<td>Portland,Oregon</td>
-			<td>Photography</td>
-			<td><button id="name">Edit</button> <button id="name1">Del</button></td>
+						<tbody id="mytable" >
+							
+
+					
 			
 		</tbody>
 		<tbody>
@@ -76,11 +70,80 @@
 			<td></td>
 			<td></td>
 			<td>Cooking</td>
-			<td><button id="name">Edit</button> <button id=name1>Del</button></td>
+			<td><button onclick="" id="name">Edit</button> <button id=name1>Del</button></td>
 			
 		</tbody>
 	</table>
+
 <button id="match">Download CSV</button>
 	<button id="normal">Add Item</button>
+	<script type="text/javascript">
+		var table=document.getElementById("mytable");
+		var localData=[];
+		localData=JSON.parse(localStorage.getItem('studentRecord'));
+		for(var i=0;i<localData.length;i++)
+		{
+		var firstna=localData[i].firstname;
+		var last=localData[i].lastname;
+		var em=localData[i].emaill;
+		var ph=localData[i].phonenumber;
+		var loc=localData[i].loc;
+		var hob=localData[i].hobby;
+		pushingTable((i+1),firstna,last,em,ph,loc,hob);
+		}
+		function pushingTable(id,first,lastt,ema,pho,loca,hobb)
+		{
+			var row=table.insertRow();
+			var firstcell=row.insertCell(0);
+			var secondcell=row.insertCell(1);
+			var thirdcell=row.insertCell(2);
+			var fourcell=row.insertCell(3);
+			var fivecell=row.insertCell(4);
+			var sixcell=row.insertCell(5);
+			var sevencell=row.insertCell(6);
+			var eigthcell=row.insertCell(7);
+
+
+			firstcell.innerHTML=id;
+			secondcell.innerHTML=first;
+			thirdcell.innerHTML=lastt;
+			fourcell.innerHTML=ema;
+			fivecell.innerHTML=pho;
+			sixcell.innerHTML=loca;
+			sevencell.innerHTML=hobb;
+			eigthcell.innerHTML='<button id="name">Edit</button> <button id="name1">Del</button>';
+
+			var btn=document.getElementById("name");
+			var bto=document.getElementById("name1");
+			bto.addEventListener('click',()=>{
+				deleted(id);
+
+			});
+			btn.addEventListener('click',()=>{
+				sample(id,first,lastt,ema,pho,loca,hobb);
+
+			});
+			function sample(id,first,lastt,ema,pho,loca,hobb)
+			{
+				var obj={
+					idd:id,
+					name:first,
+					las:last,
+					emaa:ema,
+					phoo:pho,
+					loc:loca,
+					hob:hobb
+				};
+				localStorage.setItem('Sample',JSON.stringify(obj));
+
+			}
+			function deleted(id)
+			{
+				alert("Are u sure want to delete the row??");
+			
+			}
+		}
+		
+	</script>
 </body>
 </html>

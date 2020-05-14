@@ -4,19 +4,28 @@
 	<title>Form reg</title>
 	<link rel="stylesheet" type="text/css" href="nama.css">
 	<script type="text/javascript">
+		var add=[];
 		
 function takevalue()
 {
 	
 
-		var name=document.getElementById("first-name").value;
-		var age=document.getElementById("Last").value;
-		var ema=document.getElementById("email").value;
-		var ph=document.getElementById("phone-number").value;
-		var lo=document.getElementById("location").value;
-		var ho=document.getElementById("Hobby").value;
-		simple(name,age,ema,ph,lo,ho);
-		
+		let name=document.getElementById("first-name").value;
+		let age=document.getElementById("Last").value;
+		let ema=document.getElementById("email").value;
+		let ph=document.getElementById("phone-number").value;
+		let lo=document.getElementById("location").value;
+		let ho=document.getElementById("Hobby").value;
+		var obj={
+			first:name,
+			last:ag,
+			email:ema,
+			phone:ph,
+			location:lo,
+			hobby:ho
+		};
+		add.push(obj);
+		localStorage.studentsRecord=JSON.stringify(add);
 	}
 	
 	</script>
@@ -55,19 +64,7 @@ function takevalue()
 	<button>Add item</button></div>
 	</form>
 </div>
-	<script type="text/javascript">
-		function simple( na,ag,em,phone,loca,hobb)
-		{
-			
-		localStorage.setItem(na ,name);
-		localStorage.setItem(ag , age);
-		localStorage.setItem(em , email);
-		localStorage.setItem(phone , phone-number);
-		localStorage.setItem(loca,Location);
-		localStorage.setItem(hobb,Hobby);
-
-		}
-	</script>
+	
 	
 
 </body>

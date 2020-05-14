@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dhanasekar</title>
+</head>
+<body>
+	<form onsubmit="takevalue()">
+		<div>
+		<label>FirstName
+		</label>
+		<input  id="name"type="text" name="name">
+	</div><div>
+		<label>Last</label>
+		<input  id="last"type="text" name="last">
+	</div>
+	<div>
+		<label>Email</label>
+		<input id="email"type="text" name="email">
+	</div>
+	<div>
+		<label>PhoneNumber</label>
+		<input id="phonenumber"type="number" name="PhoneNumber">
+	</div>
+	<div>
+		<label>Location</label>
+		<input id="location"type="text" name="Location">
+	</div>
+	<div>
+		<label>Hobby</label>
+		<input id="Hobby"type="text" name="Hobby">
+	</div>
+	<div>
+		<button>Edit item</button>
+	</div>
+	</form>
+	<script type="text/javascript">
+		var localData;
+		localData=JSON.parse(localStorage.getItem('Sample'));
+		document.getElementById("name").value=localData.name;
+		document.getElementById("last").value=localData.las;
+		document.getElementById("email").value=localData.emaa;
+		document.getElementById("phonenumber").value=localData.phoo;
+		document.getElementById("location").value=localData.loc;
+		document.getElementById("Hobby").value=localData.hob;
+		function takevalue()
+		{
+			var first=document.getElementById("name").value;
+			var last=document.getElementById("last").value;
+			var ema=document.getElementById("email").value;
+			var pho=document.getElementById("phonenumber").value;
+			var loca=document.getElementById("location").value;
+			var hoo=document.getElementById("Hobby").value;
+			var local=[];
+			local=JSON.parse(localStorage.getItem('studentRecord'));
+			let i=localData.idd-1;
+		        local[i].firstname=first;
+		        local[i].lastname=last;
+                local[i].emaill=ema;
+                local[i].phonenumber=pho;
+	            local[i].loc=loca;
+	            local[i].hobby=hoo;
+	         localStorage.studentRecord=JSON.stringify(local);
+
+		}
+	</script>
+
+</body>
+</html>
