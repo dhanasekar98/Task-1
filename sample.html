@@ -23,76 +23,32 @@
 							
 
 					
-			
-		</tbody>
-		<tbody>
-			<th>36</th>
-			<td>Tristan</td>
-			<td>Rodriguez</td>
-			<td>tr@gmail.com</td>
-			<td>201-555-5555</td>
-			<td>New York,New York</td>
-			<td></td>
-			<td><button id="name">Edit</button> <button id="name1">Del</button></td>
-		</tbody>
-		<tbody>
-			
-			<th>37</th>
-			<td>Andrea</td>
-			<td>Jones</td>
-			<td>ay@gmail.com</td>
-			<td>503-555-5555</td>
-			<td>Portland,Oregon</td>
-			<td>Programming</td>
-			<td ><button id="name">Edit</button> <button id="name1">Del</button></td>
-
-			
-		</tbody>
-		<tbody>
-			
-			<th>38</th>
-			<td>Elliott</td>
-			<td>Richardson</td>
-			<td>er@gmail.com</td>
-			<td>503-555-5555</td>
-			<td>Boise,Idaho</td>
-			<td></td>
-			<td><button id="name">Edit</button> <button id="name1">Del</button></td>
-			
-			
-		</tbody>
-		<tbody>
-			
-			<th>39</th>
-			<td>June</td>
-			<td>Bug</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td>Cooking</td>
-			<td><button onclick="" id="name">Edit</button> <button id=name1>Del</button></td>
-			
 		</tbody>
 	</table>
 
 <button id="match">Download CSV</button>
-	<button id="normal">Add Item</button>
+	<a href="block.html" target="_blank"><button id="normal">Add Item</button></a>
 	<script type="text/javascript">
 		var table=document.getElementById("mytable");
 		var localData=[];
-		localData=JSON.parse(localStorage.getItem('studentRecord'));
+		localData=JSON.parse(localStorage.getItem('Details'));
+		
+		
 		for(var i=0;i<localData.length;i++)
 		{
-		var firstna=localData[i].firstname;
-		var last=localData[i].lastname;
-		var em=localData[i].emaill;
+		var firstna=localData[i].first;
+		var last=localData[i].last;
+		var em=localData[i].email;
 		var ph=localData[i].phonenumber;
-		var loc=localData[i].loc;
+		var loc=localData[i].location;
 		var hob=localData[i].hobby;
 		pushingTable((i+1),firstna,last,em,ph,loc,hob);
 		}
+	
 		function pushingTable(id,first,lastt,ema,pho,loca,hobb)
 		{
+			if(first)
+			{
 			var row=table.insertRow();
 			var firstcell=row.insertCell(0);
 			var secondcell=row.insertCell(1);
@@ -111,18 +67,18 @@
 			fivecell.innerHTML=pho;
 			sixcell.innerHTML=loca;
 			sevencell.innerHTML=hobb;
-			eigthcell.innerHTML='<button id="name">Edit</button> <button id="name1">Del</button>';
+			eigthcell.innerHTML='<button id="name">Edit</button> <button  onclick="Delete('+(id-1)+')" id="name1">Del</button>';
+		}
+		this.Delete=function(item){
+			var na=null;
+			this.localData[item].first=na;
+			localStorage.Details=JSON.stringify(localData);
+			location.reload();
+			
+			
+		}
 
-			var btn=document.getElementById("name");
-			var bto=document.getElementById("name1");
-			bto.addEventListener('click',()=>{
-				deleted(id);
-
-			});
-			btn.addEventListener('click',()=>{
-				sample(id,first,lastt,ema,pho,loca,hobb);
-
-			});
+			
 			function sample(id,first,lastt,ema,pho,loca,hobb)
 			{
 				var obj={
@@ -137,10 +93,18 @@
 				localStorage.setItem('Sample',JSON.stringify(obj));
 
 			}
-			function deleted(id)
+			function deleted(id,first,lastt,ema,pho,loca,hobb)
 			{
-				alert("Are u sure want to delete the row??");
-			
+				let i=id-1;
+				var loc=[];
+				var name=null;
+				loc=JSON.parse(localStorage.getItem('studentRecord'));
+				loc[i].firstname=name;
+				localStorage.studentRecord=JSON.stringify(loc);
+				pushingTable(id,first,lastt,ema,pho,loca,hobb);
+				
+				
+
 			}
 		}
 		
